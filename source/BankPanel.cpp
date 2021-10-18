@@ -224,16 +224,17 @@ void BankPanel::Draw()
 	
 	// Draw the total daily payment.
 	table.Advance(3);
-	table.Draw("total:", selected);
+	
 	if (totalPayment < 0)
 	{
-		string st = std::to_string(-totalPayment) + " (As Income)";
+		table.Draw("Income:", selected);
+		string st = std::to_string(-totalPayment);
 		table.Draw(st, unselected);
 	}
 	else {
+		table.Draw("Total:", selected);
 		table.Draw(totalPayment, unselected);
 	}
-	table.Draw(totalPayment, unselected);
 	table.Advance();
 	
 	// Draw the credit score.
