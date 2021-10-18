@@ -227,7 +227,7 @@ void BankPanel::Draw()
 	table.Draw("total:", selected);
 	if (totalPayment < 0)
 	{
-		string st = std::string to_string(-totalPayment) + " (As Income)";
+		string st = std::to_string(-totalPayment) + " (As Income)";
 		table.Draw(st, unselected);
 	}
 	else {
