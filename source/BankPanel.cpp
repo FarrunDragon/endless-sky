@@ -225,6 +225,13 @@ void BankPanel::Draw()
 	// Draw the total daily payment.
 	table.Advance(3);
 	table.Draw("total:", selected);
+	if (totalPayment < 0)
+	{
+		table.Draw(-totalPayment + " (As Income)", unselected);
+	}
+	else {
+		table.Draw(totalPayment, unselected);
+	}
 	table.Draw(totalPayment, unselected);
 	table.Advance();
 	
