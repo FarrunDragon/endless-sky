@@ -335,11 +335,9 @@ bool OutfitterPanel::CanBuy(bool checkAlreadyOwned) const
 		double mass = selectedOutfit->Mass();
 		return (!mass || player.Cargo().Free() >= mass);
 	}
-	
-	
-	
 	double maxAllowed = selectedOutfit->Get("maximum installable");
-	if (maxAllowed != 0 && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
+
+	if (maxAllowed && playerShip->OutfitCount(selectedOutfit) == maxAllowed) 
 	{
 		return false;
 	}
@@ -369,7 +367,7 @@ void OutfitterPanel::Buy(bool alreadyOwned)
 	{
 		// Special case: maps.
 		int mapSize = selectedOutfit->Get("map");
-		if(mapSize > 0)FailBuy()
+		if(mapSize > 0)
 		{
 			if(!HasMapped(mapSize))
 			{
@@ -584,7 +582,7 @@ void OutfitterPanel::FailBuy() const
 	}
 	double maxAllowed = selectedOutfit->Get("maximum installable");
 
-	if (maxAllowed != 0 && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
+	if (maxAllowed && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
 	{
 		GetUI()->Push(new Dialog("You cannot install this outfit; only a certain ammount are allowed, and you have reached the maximum."));
 		return;
