@@ -584,7 +584,7 @@ void OutfitterPanel::FailBuy() const
 
 	if (maxAllowed && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
 	{
-		GetUI()->Push(new Dialog("Terin says: eXcLaMaTiOn MaRkS aRe AgAiNsT tHe RuLeS!!!!!!!!!!!!!!"));
+		GetUI()->Push(new Dialog("You cannot install this outfit as only a certain amount can be installed at once, and you have reached the maximum."));
 		return;
 	}
 }
