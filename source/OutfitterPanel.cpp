@@ -584,7 +584,7 @@ void OutfitterPanel::FailBuy() const
 
 	if (maxAllowed && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
 	{
-		GetUI()->Push(new Dialog("You cannot install this outfit; only a certain ammount are allowed, and you have reached the maximum."));
+		GetUI()->Push(new Dialog("You cannot install this outfit as only a certain amount can be installed at once, and you have reached the maximum."));
 		return;
 	}
 }
