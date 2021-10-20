@@ -574,6 +574,13 @@ void OutfitterPanel::FailBuy() const
 			"For example, it may use up more cargo space than you have left."));
 		return;
 	}
+	double maxAllowed = selectedOutfit->Get("maximum installable");
+
+	if (maxAllowed != 0 && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
+	{
+		GetUI()->Push(new Dialog("You cannot install this outfit; only a certain ammount are allowed, and you have reached the maximum."));
+		return;
+	}
 }
 
 
