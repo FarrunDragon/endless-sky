@@ -336,6 +336,14 @@ bool OutfitterPanel::CanBuy(bool checkAlreadyOwned) const
 		return (!mass || player.Cargo().Free() >= mass);
 	}
 	
+	
+	
+	double maxAllowed = selectedOutfit->Get("maximum installable");
+	if (maxAllowed != 0 && playerShip->OutfitCount(selectedOutfit) == maxAllowed)
+	{
+		return false;
+	}
+	
 	for(const Ship *ship : playerShips)
 		if(ShipCanBuy(ship, selectedOutfit))
 			return true;
@@ -361,7 +369,7 @@ void OutfitterPanel::Buy(bool alreadyOwned)
 	{
 		// Special case: maps.
 		int mapSize = selectedOutfit->Get("map");
-		if(mapSize > 0)
+		if(mapSize > 0)FailBuy()
 		{
 			if(!HasMapped(mapSize))
 			{
